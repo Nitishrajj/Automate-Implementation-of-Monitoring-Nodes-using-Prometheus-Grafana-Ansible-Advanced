@@ -64,8 +64,8 @@ Vars - The vars/ directory holds variable files. These files can define variable
 Templates - The templates/ directory is used for Jinja2 templates. Templates are text files with placeholders for variables and expressions. They are processed by Ansible and can be used to dynamically generate configuration files or scripts based on the values of variables.
 
 # Ansible inventory file explained 
-[name_of_the_role]
+[name_of_the_gropu]
 
- ip address of the instance you want to configure or install the requirements 
+ ip address of the instance you want to configure or install the requirements / host address.
 
 
