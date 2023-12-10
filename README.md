@@ -28,6 +28,9 @@ You can see "Authorized keys" file in this location. In this authorized keys fil
 Now you should be able to connect to the monitoring node through the controller using the command "ssh@monitoringnodeipaddress" from controller cli. 
 Similarly setup the ssh connection between node1 and node2 using the same procedure and try to check using "ssh@IPADD"
 Once all the connections are set we are ready to configure using our Ansible to monitor the nodes. 
+Use the command "ansible-playbook -i {path/to/inventoryfile/inventory} {path/to/yamlfile/.ymlfile}"
+
+You can cross check by manually logging into the nodes and checking for node exporter or manually logging into monitoring node anc checking for grafana/prometheus. 
 
 
 
@@ -59,3 +62,9 @@ Tasks - The tasks/ directory is where the main work of a role happens. It contai
 Handlers - The handlers/ directory contains Ansible handlers. Handlers are special tasks that are only run if a task notifies them. They are typically used to restart services or perform other actions in response to changes in the system.
 Vars - The vars/ directory holds variable files. These files can define variables that are used in the tasks. Variables allow you to make your roles more flexible and reusable by parameterizing values that might change based on the environment or specific use case.
 Templates - The templates/ directory is used for Jinja2 templates. Templates are text files with placeholders for variables and expressions. They are processed by Ansible and can be used to dynamically generate configuration files or scripts based on the values of variables.
+
+# Ansible inventory file explained 
+[name_of_the_role]
+ip address of the instance you want to configure or install the requirements 
+
+
