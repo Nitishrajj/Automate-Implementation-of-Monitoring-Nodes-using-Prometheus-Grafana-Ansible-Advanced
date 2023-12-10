@@ -21,3 +21,10 @@ Ansible (.yml file ) explanation.
 We have used Ansible roles to keep our ansible in a structured way 
 In Ansible, roles are a way to organize and structure your playbooks by breaking them into smaller, reusable components. In a simpler way a role is to organize playbooks and reuse them.  Here we have 3 different things to do 1 is installing and configuring grafana (which is our role 1) 2 is configuring node exporter in our nodes (role 2 ) and 3 is configuring prometheus to scrape metrics using node exporter  (role 3). 
 So, we have created 3 roles in roles folder
+
+Deep dive into Ansible --> Roles  -- > File structure 
+Files - The files/ directory contains static files that need to be transferred to the managed nodes during the playbook execution. These can include configuration files, scripts, or any other files required by the tasks.
+Tasks - The tasks/ directory is where the main work of a role happens. It contains YAML files defining tasks that Ansible should perform on the managed nodes. Tasks can include actions like installing packages, configuring services, or copying files.
+Handlers - The handlers/ directory contains Ansible handlers. Handlers are special tasks that are only run if a task notifies them. They are typically used to restart services or perform other actions in response to changes in the system.
+Vars - The vars/ directory holds variable files. These files can define variables that are used in the tasks. Variables allow you to make your roles more flexible and reusable by parameterizing values that might change based on the environment or specific use case.
+Templates - The templates/ directory is used for Jinja2 templates. Templates are text files with placeholders for variables and expressions. They are processed by Ansible and can be used to dynamically generate configuration files or scripts based on the values of variables.
