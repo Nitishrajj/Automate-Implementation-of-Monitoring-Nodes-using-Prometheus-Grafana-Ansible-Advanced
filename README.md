@@ -30,7 +30,7 @@ Similarly setup the ssh connection between node1 and node2 using the same proced
 Once all the connections are set we are ready to configure using our Ansible to monitor the nodes. 
 Use the command "ansible-playbook -i {path/to/inventoryfile/inventory} {path/to/yamlfile/.ymlfile}"
 
-You can cross check by manually logging into the nodes and checking for node exporter or manually logging into monitoring node anc checking for grafana/prometheus. 
+You can cross check by manually logging into the nodes and checking for node exporter or manually logging into monitoring node and checking for grafana/prometheus. 
 
 
 
@@ -65,6 +65,7 @@ Templates - The templates/ directory is used for Jinja2 templates. Templates are
 
 # Ansible inventory file explained 
 [name_of_the_role]
+
 ip address of the instance you want to configure or install the requirements 
 
 
