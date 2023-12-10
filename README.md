@@ -19,5 +19,5 @@ Since our project deals with larger commands we have used Ansible playbooks (.ym
 
 Ansible (.yml file ) explanation. 
 We have used Ansible roles to keep our ansible in a structured way 
-In Ansible, roles are a way to organize and structure your playbooks by breaking them into smaller, reusable components. Here we have 3 different things to do 1 is installing and configuring grafana (which is our role 1) 2 is configuring node exporter in our nodes (role 2 ) and 3 is configuring prometheus to scrape metrics using node exporter  (role 3). 
+In Ansible, roles are a way to organize and structure your playbooks by breaking them into smaller, reusable components. In a simpler way a role is to organize playbooks and reuse them.  Here we have 3 different things to do 1 is installing and configuring grafana (which is our role 1) 2 is configuring node exporter in our nodes (role 2 ) and 3 is configuring prometheus to scrape metrics using node exporter  (role 3). 
 So, we have created 3 roles in roles folder
