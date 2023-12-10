@@ -17,11 +17,13 @@ In this project we are using Ansible playbooks to do the configuration in the no
 Basically, Ansible adhoc commands are used when you want to execute small commands (like "ls", etc) but when you want to execute bigger commands for configuration management or deploymet or automation it is suggested to use Ansible playbooks. 
 Since our project deals with larger commands we have used Ansible playbooks (.yml file)
 
+# About Ansible playbooks and adhoc commands
 Ansible (.yml file ) explanation. 
 We have used Ansible roles to keep our ansible in a structured way 
 In Ansible, roles are a way to organize and structure your playbooks by breaking them into smaller, reusable components. In a simpler way a role is to organize playbooks and reuse them.  Here we have 3 different things to do 1 is installing and configuring grafana (which is our role 1) 2 is configuring node exporter in our nodes (role 2 ) and 3 is configuring prometheus to scrape metrics using node exporter  (role 3). 
 So, we have created 3 roles in roles folder
 
+# Ansible file structure explanation
 Deep dive into Ansible --> Roles  -- > File structure 
 Files - The files/ directory contains static files that need to be transferred to the managed nodes during the playbook execution. These can include configuration files, scripts, or any other files required by the tasks.
 Tasks - The tasks/ directory is where the main work of a role happens. It contains YAML files defining tasks that Ansible should perform on the managed nodes. Tasks can include actions like installing packages, configuring services, or copying files.
