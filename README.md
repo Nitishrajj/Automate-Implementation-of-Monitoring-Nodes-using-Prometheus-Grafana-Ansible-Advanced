@@ -1,5 +1,37 @@
 # Automate Implementation of Monitoring Nodes using Prometheus Grafana Ansible
 
+# Getting Started 
+In this project we are using Ansible playbooks to do the configuration in the nodes respectively. Generally in Ansible we can use Adhoc commands or ansible playbooks (.yml file) for the configuration management and automation. 
+So, this project involves 2 nodes (which we are monitoring) using a monitor server and a controller to configure everything. Monitoring server is nothing but an ec2 instance/linux server/ any virtual machine hosted. 
+So here we are considering total 4 vm's / ec2 / linux server. In this one is a controller where we run our Ansible playbooks, another is the monitoring server where prometheus, grafana are hosted and last 2 are the nodes which are being monitored using the monitoring server. 
+The project main agenda is efficiency and time saving. Instead of configuring and installing node exporter in every node to monitor the nodes which involves more time. So, in this busy world we can't invest that much time so we came up with the solutoin of using ansible playbooks for this. 
+So, here we wrote different roles in the playbooks which involved configuring node exporter, grafana, prometheus. So instead of manually configuring everything the ansible playbook using ssh after getting a secure shell connection with the nodes it configures and installs node exporter and exports the metrics for monitoring. 
+
+# Implementation 
+First login to the controller using root user. The controller can be a linux server/ ec2 instance or any VM. (Putty preferrable)
+Install Ansible in the controller using below commands 
+sudo apt update 
+sudo apt install ansible
+NOTE: sudo or yum and may vary according to your instance. Please check the docs to install Ansible if any problem occurs, attaching link below 
+https://docs.ansible.com/ansible/2.9/installation_guide/intro_installation.html
+After installation check whether it got installed or no using the command below
+ansible --version
+Now navigate to .ssh for generating an ssh key 
+Use cd /root/.ssh/
+Now generate a ssh key using the command "ssh-keygen", press Enter until the key got generated. 
+Now you should be able to see the generated key using command "ls -ltr"
+id_rsa.pub is the file where your key is present
+Open this file using cat/vi/vi/nano and copy this file content 
+Now open the monitoring node and navigate to /root/.ssh/ using "cd"
+You can see "Authorized keys" file in this location. In this authorized keys file paste the copied content at the end of the file. Now give permissiong to the authorized keys file and .ssh using "chmod 600 authorized_keys" and "chmod 700 .ssh" 
+
+Now you should be able to connect to the monitoring node through the controller using the command "ssh@monitoringnodeipaddress" from controller cli. 
+Similarly setup the ssh connection between node1 and node2 using the same procedure and try to check using "ssh@IPADD"
+Once all the connections are set we are ready to configure using our Ansible to monitor the nodes. 
+
+
+
+# THEORY EXPLANATION 
 # Ansible 
 Ansible is an open-source automation tool that simplifies configuration management, application deployment, task automation, and orchestration. 
 
@@ -12,12 +44,9 @@ Prometheus acts as the core monitoring and alerting component, responsible for c
 # Node Exporter 
 Node Exporter collects a variety of metrics related to the host machine's operating system and hardware. This includes information about the CPU, memory, disk, network, and other system-level resources. Node Exporter is designed to work seamlessly with Prometheus, a popular open-source monitoring and alerting toolkit. Prometheus scrapes (pulls) metrics from Node Exporter endpoints at regular intervals. Node Exporter exposes metrics through HTTP endpoints, typically on port 9100 by default. Prometheus scrapes these endpoints to collect the metrics. The exposed metrics follow the Prometheus exposition format.
 
-# Getting Started 
-In this project we are using Ansible playbooks to do the configuration in the nodes respectively. Generally in Ansible we can use Adhoc commands or ansible playbooks (.yml file) for the configuration management and automation. 
+# About Ansible playbooks and adhoc commands
 Basically, Ansible adhoc commands are used when you want to execute small commands (like "ls", etc) but when you want to execute bigger commands for configuration management or deploymet or automation it is suggested to use Ansible playbooks. 
 Since our project deals with larger commands we have used Ansible playbooks (.yml file)
-
-# About Ansible playbooks and adhoc commands
 Ansible (.yml file ) explanation. 
 We have used Ansible roles to keep our ansible in a structured way 
 In Ansible, roles are a way to organize and structure your playbooks by breaking them into smaller, reusable components. In a simpler way a role is to organize playbooks and reuse them.  Here we have 3 different things to do 1 is installing and configuring grafana (which is our role 1) 2 is configuring node exporter in our nodes (role 2 ) and 3 is configuring prometheus to scrape metrics using node exporter  (role 3). 
