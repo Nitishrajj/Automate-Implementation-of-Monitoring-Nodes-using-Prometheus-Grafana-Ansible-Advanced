@@ -66,6 +66,6 @@ Templates - The templates/ directory is used for Jinja2 templates. Templates are
 # Ansible inventory file explained 
 [name_of_the_role]
 
-ip address of the instance you want to configure or install the requirements 
+ ip address of the instance you want to configure or install the requirements 
 
 
